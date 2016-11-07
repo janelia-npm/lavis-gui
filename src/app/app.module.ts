@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LavisInterfaceService } from './shared/lavis-interface.service';
+import { LavisControlsComponent } from './lavis-controls/lavis-controls.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LavisControlsComponent
   ],
   imports: [
     BrowserModule,
