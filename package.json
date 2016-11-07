@@ -34,7 +34,8 @@
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23",
     "eventemitter2": "^0.4.14",
-    "roslibjs": "git://github.com/janelia-npm/roslibjs.git"
+    "roslibjs": "git://github.com/janelia-npm/roslibjs.git",
+    "@types/roslib": ""
   },
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
