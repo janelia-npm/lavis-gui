@@ -1,6 +1,8 @@
+<alert [type]="connectionAlert.type">
+  {{ connectionAlert?.msg }}
+</alert>
 <div>
   <button (click)="toggleConnect()">{{connected ? 'Close' : 'Connect'}}</button>
-  {{connectionStatus}}
 </div>
 <div>
   <button (click)="chatter()">Chatter</button>

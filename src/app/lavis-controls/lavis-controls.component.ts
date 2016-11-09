@@ -5,21 +5,25 @@ import { LavisInterfaceService } from '../shared/lavis-interface.service';
 @Component({
   selector: 'app-lavis-controls',
   templateUrl: './lavis-controls.component.html',
+  // styles: [require('bootstrap.min.css')],
   styleUrls: ['./lavis-controls.component.css']
 })
 export class LavisControlsComponent implements OnInit {
 
+  public connectionAlert = {
+    'type': 'danger',
+    'msg': 'closed'
+  };
   connected: boolean = false;
-  connectionStatus: any;
   connectionStatusSubscription: any;
 
   constructor(
     private lavisInterfaceService: LavisInterfaceService,
   ) {
-    this.connectionStatus = lavisInterfaceService.connectionStatus;
+    this.connectionAlert.msg = lavisInterfaceService.connectionStatus;
     this.connectionStatusSubscription = lavisInterfaceService.connectionStatusChange.subscribe((value) => {
       this.connected = lavisInterfaceService.getConnected();
-      this.connectionStatus = value;
+      this.connectionAlert.msg = value;
     })
   }
 
