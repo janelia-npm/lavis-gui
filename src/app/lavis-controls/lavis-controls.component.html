@@ -1,5 +1,7 @@
-{{connectionStatus}}
 <div>
-  <button (click)="connect()">Connect</button>
+  <button (click)="toggleConnect()">{{connected ? 'Close' : 'Connect'}}</button>
+  {{connectionStatus}}
+</div>
+<div>
   <button (click)="chatter()">Chatter</button>
 </div>

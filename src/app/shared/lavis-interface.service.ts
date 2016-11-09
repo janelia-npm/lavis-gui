@@ -2,68 +2,77 @@ import { Injectable, OnInit } from '@angular/core';
 
 import { Subject } from 'rxjs';
 
-// const ROSLIB = require('roslib');
+const ROSLIB = require('roslib');
 
-import { Ros } from '@types/roslib';
+import { Ros, Message, Param, Service, ServiceRequest, ServiceResponse, Topic } from 'roslib';
 
 @Injectable()
 export class LavisInterfaceService {
 
+  connected: boolean = false;
   connectionStatus: any;
 
   constructor() {
     this.connectionStatus = "closed";
   }
 
-  // ros: any = new ROSLIB.Ros();
-  // url: string = 'ws://localhost:9090';
+  ros: Ros = new ROSLIB.Ros();
+  url: string = 'ws://localhost:9090';
 
   connectionStatusChange: Subject<string> = new Subject<string>();
 
-  // chatterTopic: any = new ROSLIB.Topic({
-  //   ros : this.ros,
-  //   name : '/chatter',
-  //   messageType : 'std_msgs/String'
-  // });
-  // chatterMsg: any = new ROSLIB.Message({
-  //   data: 'test'
-  // })
+  chatterTopic: Topic = new ROSLIB.Topic({
+    ros : this.ros,
+    name : '/chatter',
+    messageType : 'std_msgs/String'
+  });
+  chatterMsg: Message = new ROSLIB.Message({
+    data: ''
+  })
 
-  // ngOnInit() {
-  // }
-
-  connect() {
-    // let _self = this;
-    // this.ros.on('connection', function() {
-    //   console.log('Connected to websocket server.');
-    //   _self.connectionStatus = 'connected';
-    //   _self.connectionStatusChange.next(_self.connectionStatus);
-    // });
-    // this.ros.on('error', function(error) {
-    //   console.log('Error connecting to websocket server: ', error);
-    //   _self.connectionStatus = 'error';
-    //   _self.connectionStatusChange.next(_self.connectionStatus);
-    // });
-    // this.ros.on('close', function() {
-    //   console.log('Connection to websocket server closed.');
-    //   _self.connectionStatus = 'closed';
-    //   _self.connectionStatusChange.next(_self.connectionStatus);
-    // });
-
-    // console.log('Connecting to websocket server.');
-    this.connectionStatus = 'connecting';
-    this.connectionStatusChange.next(this.connectionStatus);
-    // this.ros.connect(this.url);
+  ngOnInit() {
   }
 
-  // getConnectionStatus(): string {
-  //   return this.connectionStatus;
-  // }
+  connect() {
+    this.ros.on('connection', () => {
+      console.log('Connected to websocket server.');
+      this.connected = true;
+      this.connectionStatus = 'connected';
+      this.connectionStatusChange.next(this.connectionStatus);
+    });
+    this.ros.on('error', (error) => {
+      console.log('Error connecting to websocket server: ', error);
+      this.connected = false;
+      this.connectionStatus = 'error';
+      this.connectionStatusChange.next(this.connectionStatus);
+    });
+    this.ros.on('close', () => {
+      console.log('Connection to websocket server closed.');
+      this.connected = false;
+      this.connectionStatus = 'closed';
+      this.connectionStatusChange.next(this.connectionStatus);
+    });
+    console.log('Connecting to websocket server.');
+    this.connectionStatus = 'connecting';
+    this.connectionStatusChange.next(this.connectionStatus);
+    this.ros.connect(this.url);
+  }
+
+  close() {
+    this.ros.close();
+  }
+
+  getConnected(): boolean {
+    return this.connected
+  }
+
+  getConnectionStatus(): string {
+    return this.connectionStatus;
+  }
 
   chatter() {
     console.log('publishing test chatter message!');
-    // publishChatterMsg('??????????');
-    // this.chatterMsg.data = 'abcdefg';
-    // this.chatterTopic.publish(this.chatterMsg);
+    this.chatterMsg = {'data':'abcdefg'};
+    this.chatterTopic.publish(this.chatterMsg);
   }
 }

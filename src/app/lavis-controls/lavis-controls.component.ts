@@ -9,6 +9,7 @@ import { LavisInterfaceService } from '../shared/lavis-interface.service';
 })
 export class LavisControlsComponent implements OnInit {
 
+  connected: boolean = false;
   connectionStatus: any;
   connectionStatusSubscription: any;
 
@@ -17,6 +18,7 @@ export class LavisControlsComponent implements OnInit {
   ) {
     this.connectionStatus = lavisInterfaceService.connectionStatus;
     this.connectionStatusSubscription = lavisInterfaceService.connectionStatusChange.subscribe((value) => {
+      this.connected = lavisInterfaceService.getConnected();
       this.connectionStatus = value;
     })
   }
@@ -28,11 +30,19 @@ export class LavisControlsComponent implements OnInit {
   //   this._connectionStatusSubscription?.unsubscribe();
   // }
 
-  connect(): void {
-    this.lavisInterfaceService.connect();
+  toggleConnect(): void {
+    if (!this.connected) {
+      this.lavisInterfaceService.connect();
+    } else {
+      this.lavisInterfaceService.close();
+    }
   }
 
   chatter(): void {
-    this.lavisInterfaceService.chatter();
+    if (this.connected) {
+      this.lavisInterfaceService.chatter();
+    } else {
+      console.log('Not connected!');
+    }
   }
 }
