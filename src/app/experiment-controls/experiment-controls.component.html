@@ -1,0 +1,26 @@
+<div class="card">
+  <!-- <div class="card-header text-xs-center"> -->
+  <!--   Experiment Controls -->
+  <!-- </div> -->
+  <div class="container-fluid card-block">
+    <div class="row flex-items-xs-middle">
+      <div class="col-sm text-xs-center">
+        <label>protocol:</label>
+        <!-- <button (click)="toggleConnect()">{{connected ? 'Close' : 'Connect'}}</button> -->
+      </div>
+      <div class="col-sm text-xs-center">
+        <label>driver:</label>
+        <input [(ngModel)]="driver">
+        <!-- <input type="number" (change)="setThreshold($event)" [min]="thresholdMin" [max]="thresholdMax" [(value)]="threshold"/> -->
+      </div>
+      <div class="col-sm text-xs-center">
+        <label>effector:</label>
+        <!-- <button (click)="clearBuffers()">Clear Buffers</button> -->
+      </div>
+      <div class="col-sm text-xs-center">
+        <label>date time:</label>
+        <!-- {{dateTime}} -->
+      </div>
+    </div>
+  </div>
+</div>

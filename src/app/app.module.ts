@@ -8,11 +8,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { LavisInterfaceService } from './shared/lavis-interface.service';
 import { LavisControlsComponent } from './lavis-controls/lavis-controls.component';
+import { ExperimentControlsComponent } from './experiment-controls/experiment-controls.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LavisControlsComponent
+    LavisControlsComponent,
+    ExperimentControlsComponent
   ],
   imports: [
     BrowserModule,
