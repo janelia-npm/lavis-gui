@@ -20,6 +20,10 @@ export class LavisControlsComponent implements OnInit {
   thresholdMax: number = 255;
   threshold: number = 100;
 
+  status: string = 'testing';
+
+  runTime: number = 0;
+
   constructor(
     private lavisInterfaceService: LavisInterfaceService,
   ) {

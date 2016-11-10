@@ -1,20 +1,28 @@
-<ngb-alert [type]="connectionAlert.type">
+<ngb-alert [type]="connectionAlert.type" [dismissible]="false">
   {{ connectionAlert?.msg }}
 </ngb-alert>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-sm-2 text-xs-center">
       <button (click)="toggleConnect()">{{connected ? 'Close' : 'Connect'}}</button>
     </div>
-    <div class="col-lg-6">
+    <div class="col-sm-2 text-xs-center">
       <label>threshold:</label>
       <input type="number" (change)="setThreshold($event)" [min]="thresholdMin" [max]="thresholdMax" [(value)]="threshold"/>
     </div>
-    <div class="col-lg-6">
+    <div class="col-sm-2 text-xs-center">
       <button (click)="clearBuffers()">Clear Buffers</button>
     </div>
-    <div class="col-lg-6">
+    <div class="col-sm-2 text-xs-center">
       <button (click)="centerStage()">Center Stage</button>
+    </div>
+    <div class="col-sm-2">
+      <label>status:</label>
+      {{status}}
+    </div>
+    <div class="col-sm-2">
+      <label>run time:</label>
+      {{runTime}}
     </div>
   </div>
 </div>
