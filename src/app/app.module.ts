@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LavisInterfaceService } from './shared/lavis-interface.service';
@@ -18,7 +18,7 @@ import { LavisControlsComponent } from './lavis-controls/lavis-controls.componen
     BrowserModule,
     FormsModule,
     HttpModule,
-    AlertModule
+    NgbModule.forRoot()
   ],
   providers: [
     LavisInterfaceService

@@ -1,9 +1,20 @@
-<alert [type]="connectionAlert.type">
+<ngb-alert [type]="connectionAlert.type">
   {{ connectionAlert?.msg }}
-</alert>
-<div>
-  <button (click)="toggleConnect()">{{connected ? 'Close' : 'Connect'}}</button>
-</div>
-<div>
-  <button (click)="chatter()">Chatter</button>
+</ngb-alert>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <button (click)="toggleConnect()">{{connected ? 'Close' : 'Connect'}}</button>
+    </div>
+    <div class="col-lg-6">
+      <label>threshold:</label>
+      <input type="number" (change)="setThreshold($event)" [min]="thresholdMin" [max]="thresholdMax" [(value)]="threshold"/>
+    </div>
+    <div class="col-lg-6">
+      <button (click)="clearBuffers()">Clear Buffers</button>
+    </div>
+    <div class="col-lg-6">
+      <button (click)="centerStage()">Center Stage</button>
+    </div>
+  </div>
 </div>

@@ -62,17 +62,13 @@ export class LavisInterfaceService {
     this.ros.close();
   }
 
-  getConnected(): boolean {
-    return this.connected
-  }
-
-  getConnectionStatus(): string {
-    return this.connectionStatus;
-  }
-
   chatter() {
     console.log('publishing test chatter message!');
     this.chatterMsg = {'data':'abcdefg'};
     this.chatterTopic.publish(this.chatterMsg);
+  }
+
+  setThreshold(threshold: number) {
+    console.log('setting threshold: ' + String(threshold));
   }
 }

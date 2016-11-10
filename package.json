@@ -7,8 +7,8 @@
     "url": "https://github.com/peterpolidoro"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/janelia-npm/lavis-gui"
+    "type": "git",
+    "url": "https://github.com/janelia-npm/lavis-gui"
   },
   "license": "BSD-3-Clause",
   "angular-cli": {},
@@ -29,15 +29,14 @@
     "@angular/platform-browser": "~2.1.0",
     "@angular/platform-browser-dynamic": "~2.1.0",
     "@angular/router": "~3.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.11",
+    "@types/roslib": "0.0.28",
     "core-js": "^2.4.1",
+    "eventemitter2": "^0.4.14",
+    "roslib": "^0.18.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.6.23",
-    "eventemitter2": "^0.4.14",
-    "roslibjs": "git://github.com/janelia-npm/roslibjs.git",
-    "@types/roslib": "",
-    "bootstrap": "",
-    "ng2-bootstrap": ""
+    "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
