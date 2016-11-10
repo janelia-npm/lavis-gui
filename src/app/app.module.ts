@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2CompleterModule } from "ng2-completer";
 
 import { AppComponent } from './app.component';
 import { LavisInterfaceService } from './shared/lavis-interface.service';
@@ -20,7 +21,8 @@ import { ExperimentControlsComponent } from './experiment-controls/experiment-co
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    Ng2CompleterModule
   ],
   providers: [
     LavisInterfaceService

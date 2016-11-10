@@ -9,13 +9,20 @@
         <!-- <button (click)="toggleConnect()">{{connected ? 'Close' : 'Connect'}}</button> -->
       </div>
       <div class="col-sm text-xs-center">
-        <label>driver:</label>
-        <input [(ngModel)]="driver">
-        <!-- <input type="number" (change)="setThreshold($event)" [min]="thresholdMin" [max]="thresholdMax" [(value)]="threshold"/> -->
+        <label>driver: {{driver}}</label>
+        <ng2-completer [(ngModel)]="driver"
+                       [dataService]="driverDataService"
+                       [minSearchLength]="0"
+                       [overrideSuggested]="true"
+                       (change)="selectDriver($event)"></ng2-completer>
       </div>
       <div class="col-sm text-xs-center">
-        <label>effector:</label>
-        <!-- <button (click)="clearBuffers()">Clear Buffers</button> -->
+        <label>effector: {{effector}}</label>
+        <ng2-completer [(ngModel)]="effector"
+                       [dataService]="effectorDataService"
+                       [minSearchLength]="0"
+                       [overrideSuggested]="true"
+                       (change)="selectEffector($event)"></ng2-completer>
       </div>
       <div class="col-sm text-xs-center">
         <label>date time:</label>
