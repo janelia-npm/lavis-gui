@@ -49,6 +49,7 @@ export class LavisControlsComponent implements OnInit {
   toggleConnect(): void {
     if (!this.connected) {
       this.lavisInterfaceService.connect();
+      this.lavisInterfaceService.setThreshold(this.threshold);
     } else {
       this.lavisInterfaceService.close();
     }
