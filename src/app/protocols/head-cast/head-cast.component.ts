@@ -12,4 +12,12 @@ export class HeadCastComponent implements OnInit {
   ngOnInit() {
   }
 
+  startProtocol(): void {
+    console.log('Start head-cast protocol');
+  }
+
+  stopProtocol(): void {
+    console.log('Stop head-cast protocol');
+  }
+
 }
