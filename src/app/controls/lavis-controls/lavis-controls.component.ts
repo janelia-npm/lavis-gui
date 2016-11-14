@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LavisInterfaceService } from '../shared/lavis-interface.service';
+import { LavisInterfaceService } from '../../shared/lavis-interface/lavis-interface.service';
 
 @Component({
   selector: 'app-lavis-controls',
@@ -49,6 +49,7 @@ export class LavisControlsComponent implements OnInit {
   toggleConnect(): void {
     if (!this.connected) {
       this.lavisInterfaceService.connect();
+      this.lavisInterfaceService.setThreshold(this.threshold);
     } else {
       this.lavisInterfaceService.close();
     }

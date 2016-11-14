@@ -7,9 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2CompleterModule } from "ng2-completer";
 
 import { AppComponent } from './app.component';
-import { LavisInterfaceService } from './shared/lavis-interface.service';
-import { LavisControlsComponent } from './lavis-controls/lavis-controls.component';
-import { ExperimentControlsComponent } from './experiment-controls/experiment-controls.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { ProtocolsModule }         from './protocols/protocols.module';
+
+import { LavisInterfaceService } from './shared/lavis-interface/lavis-interface.service';
+import { LavisControlsComponent } from './controls/lavis-controls/lavis-controls.component';
+import { ExperimentControlsComponent } from './controls/experiment-controls/experiment-controls.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { ExperimentControlsComponent } from './experiment-controls/experiment-co
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    Ng2CompleterModule
+    Ng2CompleterModule,
+    AppRoutingModule,
+    ProtocolsModule
   ],
   providers: [
     LavisInterfaceService
