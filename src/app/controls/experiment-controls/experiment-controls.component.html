@@ -10,7 +10,17 @@
                        [dataService]="protocolDataService"
                        [minSearchLength]="0"
                        [overrideSuggested]="true"
-                       (change)="selectProtocol($event)"></ng2-completer>
+                       [autoMatch]="true"
+                       (change)="selectProtocol($event.target.value)"
+                       (ngModelChange)="selectProtocol($event)"
+                       >
+        </ng2-completer>
+        <div *ngIf="!protocol">
+          <label>options:</label>
+          <div *ngFor="let protocolOption of protocolSearchData">
+            {{protocolOption.protocol}}
+          </div>
+        </div>
       </div>
       <div class="col-sm text-xs-center">
         <label>driver: {{driver}}</label>
@@ -18,7 +28,17 @@
                        [dataService]="driverDataService"
                        [minSearchLength]="0"
                        [overrideSuggested]="true"
-                       (change)="selectDriver($event)"></ng2-completer>
+                       [autoMatch]="true"
+                       (change)="selectDriver($event.target.value)"
+                       (ngModelChange)="selectDriver($event)"
+                       >
+        </ng2-completer>
+        <div *ngIf="!driver">
+          <label>options:</label>
+          <div *ngFor="let driverOption of driverSearchData">
+            {{driverOption.driver}}
+          </div>
+        </div>
       </div>
       <div class="col-sm text-xs-center">
         <label>effector: {{effector}}</label>
@@ -26,7 +46,17 @@
                        [dataService]="effectorDataService"
                        [minSearchLength]="0"
                        [overrideSuggested]="true"
-                       (change)="selectEffector($event)"></ng2-completer>
+                       [autoMatch]="true"
+                       (change)="selectEffector($event.target.value)"
+                       (ngModelChange)="selectEffector($event)"
+                       >
+        </ng2-completer>
+        <div *ngIf="!effector">
+          <label>options:</label>
+          <div *ngFor="let effectorOption of effectorSearchData">
+            {{effectorOption.effector}}
+          </div>
+        </div>
       </div>
       <div class="col-sm text-xs-center">
         <label>date time:</label>

@@ -6,7 +6,7 @@ import { HeadCastComponent } from './head-cast/head-cast.component';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'head-cast',  component: HeadCastComponent }
+      { path: 'head-cast',  component: HeadCastComponent },
     ])
   ],
   exports: [

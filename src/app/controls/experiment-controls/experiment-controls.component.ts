@@ -14,9 +14,6 @@ export class ExperimentControlsComponent implements OnInit {
   private protocol: string;
   private protocolDataService: CompleterData;
   private protocolSearchData: Array<Object>;
-  // private protocolSearchData = [
-  //   { protocol: 'head-cast' },
-  // ];
 
   private driver: string;
   private driverDataService: CompleterData;
@@ -42,44 +39,51 @@ export class ExperimentControlsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events
-      .filter(event => event instanceof NavigationEnd)
-      .subscribe(event => {  // note, we don't use event
-        this.protocolSearchData = [];
-        let currentRoute = this.route.root,
-        url = '';
-        do {
-          let childrenRoutes = currentRoute.children;
-          currentRoute = null;
-          childrenRoutes.forEach(route => {
-            if(route.outlet === 'primary') {
-              let routeSnapshot = route.snapshot;
-              console.log('snapshot:', routeSnapshot)
-              url += '/' + routeSnapshot.url.map(segment => segment.path).join('/');
-              this.protocolSearchData.push({
-                label: route.snapshot.data.breadcrumb,
-                url:   url });
-              currentRoute = route;
-            }
-          })
-        } while(currentRoute);
-      })
-    // this.protocolDataService = this.completerService.local(this.protocolSearchData, 'protocol', 'protocol');
+    this.protocol = '';
+    this.protocolSearchData = [];
+    for (let route of this.router.config)
+    {
+      let protocolString = route.path;
+      if (protocolString) {
+        this.protocolSearchData.push({
+          'protocol': protocolString,
+        });
+      };
+    }
+    this.protocolDataService = this.completerService.local(this.protocolSearchData, 'protocol', 'protocol');
   }
 
-  selectProtocol(event: any): void {
-    this.protocol = event.target.value;
-    console.log('protocol: ' + this.protocol);
+  selectProtocol(protocol: any): void {
+    if (protocol) {
+      this.protocol = protocol;
+      let inProtocolArray = false;
+      for (let index in this.protocolSearchData)
+      {
+        if (this.protocolSearchData[index]['protocol'] == this.protocol) {
+          inProtocolArray = true;
+          break;
+        }
+      }
+      console.log('selectProtocol: ' + this.protocol);
+      if (inProtocolArray) {
+        this.router.navigate([this.protocol]);
+        console.log('navigate: ' + this.protocol);
+      }
+    }
   }
 
-  selectDriver(event: any): void {
-    this.driver = event.target.value;
-    console.log('driver: ' + this.driver);
+  selectDriver(driver: any): void {
+    if (driver) {
+      this.driver = driver;
+      console.log('driver: ' + this.driver);
+    }
   }
 
-  selectEffector(event: any): void {
-    this.effector = event.target.value;
-    console.log('effector: ' + this.effector);
+  selectEffector(effector: any): void {
+    if (effector) {
+      this.effector = effector;
+      console.log('effector: ' + this.effector);
+    }
   }
 
 }

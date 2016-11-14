@@ -1,23 +1,12 @@
 import { NgModule }     from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { SelectProtocolComponent } from './controls/select-protocol/select-protocol.component';
+
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/head-cast',
-        pathMatch: 'full'
-      },
-      {
-        path: '**',
-        redirectTo: '/head-cast',
-        pathMatch: 'full'
-      }
-      // { path: '', component: HomeComponent },
-      // { path: '**', component: PageNotFoundComponent }
-      // { path: 'crisis-center', component: CrisisListComponent },
-      // { path: 'heroes', component: HeroListComponent }
+      { path: '',  component: SelectProtocolComponent }
     ])
   ],
   exports: [
