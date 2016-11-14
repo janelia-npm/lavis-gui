@@ -1,4 +1,23 @@
-# LavisGui
+# lavis-gui
+
+## Installation
+
+[Install node and npm if necessary](https://nodejs.org/en/download/)
+
+Upgrade node if necessary:
+
+On Cloud9
+
+```shell
+nvm install stable
+```
+
+Navigate to the directory of this cloned repository in a command line.
+
+```shell
+npm install
+
+```
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
 
